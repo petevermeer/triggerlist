@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Random Trigger List</title>
+		<script type="text/javascript" src="triggerlist.js"></script>
+		<script>
+			play = true;
+			rate = 3000;
+			function pausePlay(){
+				play = !play;
+				if(play){
+					document.getElementById("janx").innerHTML = "Pause";
+				}
+				else{
+					document.getElementById("janx").innerHTML = "Resume";
+				}
+			}
+			function changeRate(delta){
+				location.reload();
+				rate = rate * delta;
+			}
+			window.onload = function(){
+				var fn = function(){
+					if(play){
+						document.getElementById("query").innerHTML = triggerlist[Math.floor(triggerlist.length * Math.random())];
+					}
+				}
+				setInterval(fn,rate);
+			}
+		</script>
+		<style>
+			body{
+				color:navy;
+				font-family:Gill Sans, Helvetica, sans-serif;
+				font-size:200%;
+				}
+			#container{
+				text-align:center;
+				top:40%;
+				width:99%;
+				position:absolute;
+			}
+			a:link{
+				color:navy;
+			}
+			a:visited{
+				color:navy;
+			}
+			a:hover{
+				color:blue;
+			}
+			a{
+				right:20px;
+				bottom:20px;
+				position:absolute;
+				
+			}
+			#janx{
+				font-size: 120%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<p id="query">Get ready to clear your head...</p>
+			<button id="janx" type="button" onmousedown="pausePlay()">Pause</button>
+		</div>
+		<a href="about.html">Que?</a>
+		<script type="text/javascript" src="http://www.petevermeer.com/blog/analytics.js"></script>
+	</body>
+</html>
